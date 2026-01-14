@@ -25,7 +25,9 @@ const NavigationBar = () => {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <motion.a
-              href="#"
+              href="https://www.iconnectgjust.in/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center group"
               whileHover={{ scale: 1.02 }}
             >
