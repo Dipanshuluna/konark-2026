@@ -1,11 +1,13 @@
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Instagram, Linkedin, Twitter, ExternalLink, Radio } from 'lucide-react';
+import { Mail, MapPin, Instagram, Linkedin, Twitter, Youtube, Globe, ExternalLink, Radio } from 'lucide-react';
 
 const HUDFooter = () => {
   const socialLinks = [
-    { icon: Instagram, href: '#', label: 'Instagram' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
+    { icon: Globe, href: 'https://www.iconnectgjust.in/', label: 'Website' },
+    { icon: Instagram, href: 'https://www.instagram.com/iconnectgjust/', label: 'Instagram' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/company/iconnect-gjust/', label: 'LinkedIn' },
+    { icon: Twitter, href: 'https://x.com/iconnectgjust', label: 'Twitter' },
+    { icon: Youtube, href: 'https://www.youtube.com/@iConnectGJUST', label: 'YouTube' },
   ];
 
   return (
