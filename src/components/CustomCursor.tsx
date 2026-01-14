@@ -10,7 +10,7 @@ const CustomCursor = () => {
   const cursorY = useMotionValue(-100);
 
   // Smooth spring animation for the follower
-  const springConfig = { damping: 20, stiffness: 400, mass: 0.5 };
+  const springConfig = { damping: 25, stiffness: 300, mass: 0.5 };
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
 
@@ -71,7 +71,7 @@ const CustomCursor = () => {
         }
       `}</style>
 
-      {/* Main cursor - 4 rotating squares like KTJ */}
+      {/* Main cursor - simple glowing dot like KTJ 2D */}
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-[9999]"
         style={{
@@ -82,81 +82,40 @@ const CustomCursor = () => {
         <motion.div
           className="relative -translate-x-1/2 -translate-y-1/2"
           animate={{
-            scale: isClicking ? 0.7 : isHovering ? 1.3 : 1,
+            scale: isClicking ? 0.6 : isHovering ? 1.5 : 1,
             opacity: isVisible ? 1 : 0,
           }}
           transition={{ duration: 0.15 }}
         >
-          {/* Rotating container for the 4 squares */}
+          {/* Inner dot */}
           <motion.div
-            className="relative w-5 h-5"
-            animate={{ rotate: 360 }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: "linear",
+            className="w-3 h-3 rounded-full"
+            style={{
+              backgroundColor: 'hsl(var(--primary))',
+              boxShadow: '0 0 10px hsl(var(--primary)), 0 0 20px hsl(var(--primary) / 0.6), 0 0 30px hsl(var(--primary) / 0.3)',
             }}
-          >
-            {/* Top-left square */}
-            <motion.div
-              className="absolute top-0 left-0 w-2 h-2 rounded-[2px]"
-              style={{
-                backgroundColor: 'hsl(var(--primary))',
-                boxShadow: '0 0 8px hsl(var(--primary)), 0 0 15px hsl(var(--primary) / 0.5)',
-              }}
-              animate={{
-                backgroundColor: isHovering ? 'hsl(45 100% 55%)' : 'hsl(var(--primary))',
-                boxShadow: isHovering 
-                  ? '0 0 12px hsl(45 100% 55%), 0 0 20px hsl(45 100% 55% / 0.5)'
-                  : '0 0 8px hsl(var(--primary)), 0 0 15px hsl(var(--primary) / 0.5)',
-              }}
-            />
-            
-            {/* Top-right square */}
-            <motion.div
-              className="absolute top-0 right-0 w-2 h-2 rounded-[2px]"
-              style={{
-                backgroundColor: 'hsl(var(--primary))',
-                boxShadow: '0 0 8px hsl(var(--primary)), 0 0 15px hsl(var(--primary) / 0.5)',
-              }}
-              animate={{
-                backgroundColor: isHovering ? 'hsl(45 100% 55%)' : 'hsl(var(--primary))',
-                boxShadow: isHovering 
-                  ? '0 0 12px hsl(45 100% 55%), 0 0 20px hsl(45 100% 55% / 0.5)'
-                  : '0 0 8px hsl(var(--primary)), 0 0 15px hsl(var(--primary) / 0.5)',
-              }}
-            />
-            
-            {/* Bottom-left square */}
-            <motion.div
-              className="absolute bottom-0 left-0 w-2 h-2 rounded-[2px]"
-              style={{
-                backgroundColor: 'hsl(var(--primary))',
-                boxShadow: '0 0 8px hsl(var(--primary)), 0 0 15px hsl(var(--primary) / 0.5)',
-              }}
-              animate={{
-                backgroundColor: isHovering ? 'hsl(45 100% 55%)' : 'hsl(var(--primary))',
-                boxShadow: isHovering 
-                  ? '0 0 12px hsl(45 100% 55%), 0 0 20px hsl(45 100% 55% / 0.5)'
-                  : '0 0 8px hsl(var(--primary)), 0 0 15px hsl(var(--primary) / 0.5)',
-              }}
-            />
-            
-            {/* Bottom-right square - slightly offset for the KTJ look */}
-            <motion.div
-              className="absolute bottom-0 right-0 w-2 h-2 rounded-[2px]"
-              style={{
-                backgroundColor: 'hsl(var(--primary) / 0.6)',
-                boxShadow: '0 0 8px hsl(var(--primary) / 0.5), 0 0 15px hsl(var(--primary) / 0.3)',
-              }}
-              animate={{
-                backgroundColor: isHovering ? 'hsl(45 100% 55% / 0.6)' : 'hsl(var(--primary) / 0.6)',
-                boxShadow: isHovering 
-                  ? '0 0 12px hsl(45 100% 55% / 0.5), 0 0 20px hsl(45 100% 55% / 0.3)'
-                  : '0 0 8px hsl(var(--primary) / 0.5), 0 0 15px hsl(var(--primary) / 0.3)',
-              }}
-            />
-          </motion.div>
+            animate={{
+              backgroundColor: isHovering ? 'hsl(45 100% 55%)' : 'hsl(var(--primary))',
+              boxShadow: isHovering 
+                ? '0 0 15px hsl(45 100% 55%), 0 0 30px hsl(45 100% 55% / 0.6), 0 0 45px hsl(45 100% 55% / 0.3)'
+                : '0 0 10px hsl(var(--primary)), 0 0 20px hsl(var(--primary) / 0.6), 0 0 30px hsl(var(--primary) / 0.3)',
+            }}
+          />
+          
+          {/* Outer ring - appears on hover */}
+          <motion.div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full border"
+            style={{
+              borderColor: 'hsl(var(--primary) / 0.4)',
+            }}
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={{
+              scale: isHovering ? 1 : 0.5,
+              opacity: isHovering ? 1 : 0,
+              borderColor: isHovering ? 'hsl(45 100% 55% / 0.4)' : 'hsl(var(--primary) / 0.4)',
+            }}
+            transition={{ duration: 0.2 }}
+          />
         </motion.div>
       </motion.div>
 
@@ -172,13 +131,13 @@ const CustomCursor = () => {
           className="relative -translate-x-1/2 -translate-y-1/2"
           initial={false}
           animate={{
-            scale: isClicking ? [1, 2.5] : 1,
-            opacity: isClicking ? [0.6, 0] : 0,
+            scale: isClicking ? [1, 3] : 1,
+            opacity: isClicking ? [0.5, 0] : 0,
           }}
           transition={{ duration: 0.4 }}
         >
           <div 
-            className="w-6 h-6 rounded-sm border border-primary/60"
+            className="w-4 h-4 rounded-full border border-primary/60"
             style={{
               boxShadow: '0 0 10px hsl(var(--primary) / 0.3)',
             }}
