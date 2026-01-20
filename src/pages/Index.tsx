@@ -6,6 +6,8 @@ import HeroSection from '@/components/HeroSection';
 import DashboardSection from '@/components/DashboardSection';
 import HUDFooter from '@/components/HUDFooter';
 import CustomCursor from '@/components/CustomCursor';
+import FloatingElements from '@/components/FloatingElements';
+import HexagonGrid from '@/components/HexagonGrid';
 
 const Index = () => {
   const [hasEntered, setHasEntered] = useState(false);
@@ -25,6 +27,10 @@ const Index = () => {
       
       {/* Constellation Background */}
       <ConstellationBackground />
+      
+      {/* Floating Visual Elements */}
+      <FloatingElements />
+      <HexagonGrid />
       
       {/* Navigation Bar */}
       <NavigationBar />
