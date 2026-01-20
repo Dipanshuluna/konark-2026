@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Cpu, Eye, Lightbulb, Code2, Mic, Radar } from 'lucide-react';
+import { Cpu, Eye, Lightbulb, Code2, Mic, Radar, MapPin, Key, Cog, Sparkles, Swords } from 'lucide-react';
 import ZoneCard from './ZoneCard';
 
 const events = [
@@ -44,8 +44,8 @@ const events = [
   },
   {
     title: 'CROWN FOR CODE',
-    tagline: 'Code Your Way to Victory',
-    registerBy: 'Feb 15, 2026',
+    tagline: 'From Logic To Legacy',
+    registerBy: 'Jan 30, 2026',
     finalDate: 'Feb 17, 2026',
     icon: Code2,
     zoneNumber: 4,
@@ -65,6 +65,66 @@ const events = [
     gradientTo: 'to-primary',
     link: 'https://linktr.ee/',
     floatDelay: 1,
+  },
+  {
+    title: 'THE EXPO ZONE',
+    tagline: 'Exhibit. Explore. Engage.',
+    registerBy: 'Jan 30, 2026',
+    finalDate: 'Feb 16, 2026',
+    icon: MapPin,
+    zoneNumber: 6,
+    gradientFrom: 'from-primary',
+    gradientTo: 'to-electric',
+    link: 'https://linktr.ee/',
+    floatDelay: 2,
+  },
+  {
+    title: 'ESCAPE ROOM',
+    tagline: 'Escape The Logic Trap',
+    registerBy: 'Jan 30, 2026',
+    finalDate: 'Feb 10, 2026',
+    icon: Key,
+    zoneNumber: 7,
+    gradientFrom: 'from-electric',
+    gradientTo: 'to-magenta',
+    link: 'https://linktr.ee/',
+    floatDelay: 0,
+  },
+  {
+    title: 'RUBE GOLDBERG MACHINE',
+    tagline: 'Make One Move Count',
+    registerBy: 'Jan 30, 2026',
+    finalDate: 'Feb 16, 2026',
+    icon: Cog,
+    zoneNumber: 8,
+    gradientFrom: 'from-primary',
+    gradientTo: 'to-magenta',
+    link: 'https://linktr.ee/',
+    floatDelay: 1,
+  },
+  {
+    title: 'AI SPRINT',
+    tagline: 'Prompt Right. Create Better.',
+    registerBy: 'Jan 30, 2026',
+    finalDate: 'Feb 17, 2026',
+    icon: Sparkles,
+    zoneNumber: 9,
+    gradientFrom: 'from-magenta',
+    gradientTo: 'to-electric',
+    link: 'https://linktr.ee/',
+    floatDelay: 2,
+  },
+  {
+    title: 'BRAIN BATTLES',
+    tagline: 'Only The Sharpest Survive',
+    registerBy: 'Jan 30, 2026',
+    finalDate: 'Feb 16, 2026',
+    icon: Swords,
+    zoneNumber: 10,
+    gradientFrom: 'from-electric',
+    gradientTo: 'to-primary',
+    link: 'https://linktr.ee/',
+    floatDelay: 0,
   },
 ];
 
